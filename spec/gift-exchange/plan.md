@@ -53,7 +53,7 @@
 
 ### 3.1 共享 / 通用模块
 
-- [ ] **TODO-G1: 礼物库加载与配置（gift_config.py）**
+- [x] **TODO-G1: 礼物库加载与配置（gift_config.py）**
   - **描述**：读取 `assets/manifest.json` 构建礼物库（物品 id / 名称 / 类型 outfit|action|emoji|custom_egg / 稀有度 / 有效期）；定义礼物类型常量与状态枚举（sent/accepted/expired）；配置项：过期时长（24h）、彩蛋上限（20）、彩蛋长度（≤200 字）；manifest 缺失/损坏时兜底空礼物库并提示。
   - **涉及模块**：互赠公共基础
   - **涉及文件**：`src/core/gift_config.py`
@@ -62,35 +62,35 @@
 
 ### 3.2 核心逻辑 / Runtime 模块
 
-- [ ] **TODO-S1: 礼物数据层与状态流转（gift_store.py）**
+- [x] **TODO-S1: 礼物数据层与状态流转（gift_store.py）**
   - **描述**：`gift_offers` 表读写（插入 / 按 giftId 更新状态 / 查询超时记录）；`user_items` 表读写（解锁插入 / 按 item_id 查重 / 到期失效移除）；状态机合法流转校验（sent→accepted / sent→expired，非法流转拒绝）；到期检查（user_items.expire_at 过期移除并通知 UI）。
   - **涉及模块**：互赠核心
   - **涉及文件**：`src/core/gift_store.py`
   - **依赖**：TODO-G1、data-consistency G1
   - **验收标准**：CRUD 与状态流转正确；非法流转拒绝；到期检查移除正确；幂等（同 giftId 不重复）。
 
-- [ ] **TODO-S2: 赠送流程（gift_send.py）**
+- [x] **TODO-S2: 赠送流程（gift_send.py）**
   - **描述**：选择礼物（从可用库过滤未到期）→ 二次确认弹窗（确认前可取消，不产生任何发送）→ 确认后写 `gift_offers`（sent）→ 经同步层加密发送 `gift.send`（携带 giftId / item / 过期时间；彩蛋含文本）→ 本端乐观解锁（UI 先行展示解锁效果，`gift_offers` 状态仍为 sent，等待对方确认）→ 启动 24h 过期计时（本地扫描）。
   - **涉及模块**：互赠核心
   - **涉及文件**：`src/core/gift_send.py`
   - **依赖**：TODO-S1、同步层
   - **验收标准**：二次确认后才发送；取消不产生记录；乐观解锁展示；重复点击同一礼物不重复发送；彩蛋文本长度校验（≤200 字）。
 
-- [ ] **TODO-S3: 接收与打开确认（gift_receive.py）**
+- [x] **TODO-S3: 接收与打开确认（gift_receive.py）**
   - **描述**：接收 `gift.send` → 礼物盒弹窗（打开 / 稍后）→ 点击打开 → 校验解锁凭证签名 → 双方各自持久化解锁（`user_items` 插入；彩蛋写入本端记忆库 + 计数校验）→ 回传 `gift.accept` → 通知 UI 解锁提示。凭证校验失败不执行解锁。
   - **涉及模块**：互赠核心
   - **涉及文件**：`src/core/gift_receive.py`
   - **依赖**：TODO-S1、TODO-S2、data-consistency S4（签名校验）
   - **验收标准**：打开后双方解锁一致；凭证签名非法拒绝解锁并提示；彩蛋写入记忆库且 20 上限生效（超出替换旧的）；"稍后"不阻塞（保留待打开）。
 
-- [ ] **TODO-S4: 过期退回与解锁失效（gift_expire.py）**
+- [x] **TODO-S4: 过期退回与解锁失效（gift_expire.py）**
   - **描述**：本地扫描 `gift_offers` 超 24h 未 accepted → 发送 `gift.expire` → 两端置 expired → 发送端可重新发送；接收端收到 `gift.expire` 清理待打开弹窗并更新状态；`user_items` 到期失效（从可用列表移除）；与 data-consistency 事件清理衔接（标记对应 events 行）。
   - **涉及模块**：互赠核心
   - **涉及文件**：`src/core/gift_expire.py`
   - **依赖**：TODO-S1、TODO-S3
   - **验收标准**：24h 边界（未到 / 恰到 / 已过）判定正确；过期后两端状态一致且可重发；接收端清理弹窗；到期物品移除。
 
-- [ ] **TODO-S5: 亲密度联动（gift_intimacy.py）**
+- [x] **TODO-S5: 亲密度联动（gift_intimacy.py）**
   - **描述**：礼物被接受后调用 pet-growth 积分入口——普通 +5；纪念日当天特惠 +20（通过 anniversary 钩子判定，不与 ×2 叠加）；双方各计一次（以接受事件为准）；积分合入走 `apply_intimacy_event`（签名 + 每日上限）。
   - **涉及模块**：互赠核心
   - **涉及文件**：`src/core/gift_intimacy.py`
@@ -99,14 +99,14 @@
 
 ### 3.3 表现层 / Tooling 模块
 
-- [ ] **TODO-C1: 礼物 UI（gift_dialog.py）**
+- [x] **TODO-C1: 礼物 UI（gift_dialog.py）**
   - **描述**：礼物库选择界面（按类型分组、未到期可用）；二次确认弹窗；礼物盒接收弹窗（"TA 送了你 🎁" + 打开 / 稍后）；解锁成功提示（动画兼容主项目 07 状态机）；已发送 / 已接受 / 已过期状态展示与"重新发送"入口；彩蛋输入框（长度与上限提示）。
   - **涉及模块**：表现层
   - **涉及文件**：`src/ui/gift_dialog.py`
   - **依赖**：TODO-S2、TODO-S3、TODO-S4
   - **验收标准**：选择与二次确认流程正确；接收弹窗打开/稍后可用；状态展示实时；彩蛋输入限长；不阻塞主线程。
 
-- [ ] **TODO-C2: 互赠联调脚本（tools/gift_demo.py）**
+- [x] **TODO-C2: 互赠联调脚本（tools/gift_demo.py）**
   - **描述**：在同步/养成/纪念日联调基础上扩展：双端配对 → A 送礼物 → B 礼物盒弹窗 → B 打开 → 双方解锁 + 亲密度 +5 → 纪念日当天特惠 +20 → 未打开超 24h → 过期退回 → A 重发 → 彩蛋互送 → 解锁到期失效。
   - **涉及模块**：工具
   - **涉及文件**：`tools/gift_demo.py`

@@ -44,6 +44,24 @@ from .anniv_config import AnnivConfig, load_anniv_config
 from .anniv_integration import register_anniversary_hook, unregister_anniversary_hook
 from .anniv_store import AnnivStore
 from .anniv_sync import AnnivSync
+from .gift_config import (
+    CUSTOM_EGG_ID,
+    GIFT_TYPES,
+    GiftConfig,
+    GiftItem,
+    GiftState,
+    item_expire_at,
+    load_gift_catalog,
+    load_gift_config,
+    sign_unlock,
+    validate_egg_text,
+    verify_unlock,
+)
+from .gift_store import GiftOffer, GiftStore, UserItem
+from .gift_send import GiftProposal, GiftSend
+from .gift_receive import GiftReceive
+from .gift_expire import GiftExpire
+from .gift_intimacy import apply_gift_intimacy, gift_intimacy_delta
 
 __all__ = [
     "Database",
@@ -100,4 +118,24 @@ __all__ = [
     "AnnivSync",
     "register_anniversary_hook",
     "unregister_anniversary_hook",
+    "CUSTOM_EGG_ID",
+    "GIFT_TYPES",
+    "GiftConfig",
+    "GiftItem",
+    "GiftState",
+    "item_expire_at",
+    "load_gift_catalog",
+    "load_gift_config",
+    "sign_unlock",
+    "validate_egg_text",
+    "verify_unlock",
+    "GiftOffer",
+    "GiftStore",
+    "UserItem",
+    "GiftProposal",
+    "GiftSend",
+    "GiftReceive",
+    "GiftExpire",
+    "apply_gift_intimacy",
+    "gift_intimacy_delta",
 ]
