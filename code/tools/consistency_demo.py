@@ -367,6 +367,11 @@ def run_demo(port_range=(48000, 48099)) -> None:
 
         # 12. 恢复后对齐：A2 发 date.sync 快照（备份快照为准，不做重放修复）
         log.info("=== 恢复后对齐 ===")
+        wait_until(
+            lambda: mgr_a2.connection_status().value == "connected"
+            and side_b.mgr.connection_status().value == "connected",
+            15, "A2/B 传输已连接（对齐前）",
+        )
         assert daily_align(mgr_a2, db_a2, mac_key=None) is AlignResult.OK
         assert _intimacy(db_a2) == 11, "恢复后亲密度以备份快照为准（不被清空）"
         wait_until(lambda: _streak(side_b.db) >= 3, 10, "B 采纳 A2 的 streak")
