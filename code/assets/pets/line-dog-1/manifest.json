@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "id": "line-dog-1",
+  "name": "线条小狗·款一",
+  "states": {
+    "idle": "assets/pets/line-dog-1/idle.svg"
+  }
+}

@@ -1,0 +1,10 @@
+# Optional AI stack for the standalone desktop pet shell (M3+)
+# Install after requirements.txt if you need local LLM / TTS / ASR.
+# See 环境准备.md for model download paths.
+
+llama-cpp-python
+sherpa-onnx
+chromadb
+PySide6
+requests
+pyinstaller

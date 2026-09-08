@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "id": "moon-cat",
+  "name": "月薪猫",
+  "states": {
+    "idle": "assets/pets/moon-cat/idle.svg"
+  }
+}

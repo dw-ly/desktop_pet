@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "gifts": [
+    {
+      "id": "outfit-heart-100",
+      "name": "爱心气泡装扮",
+      "type": "outfit",
+      "rarity": "event",
+      "expire_days": 30,
+      "asset": "gifts/outfit-heart-100.svg"
+    },
+    {
+      "id": "outfit-paw-scarf",
+      "name": "爪印围巾",
+      "type": "outfit",
+      "rarity": "common",
+      "expire_days": 30,
+      "asset": "gifts/outfit-paw-scarf.svg"
+    },
+    {
+      "id": "outfit-crown",
+      "name": "迷你皇冠",
+      "type": "outfit",
+      "rarity": "event",
+      "expire_days": 7,
+      "asset": "gifts/outfit-crown.svg"
+    },
+    {
+      "id": "outfit-glasses",
+      "name": "圆框眼镜",
+      "type": "outfit",
+      "rarity": "common",
+      "expire_days": 30,
+      "asset": "gifts/outfit-glasses.svg"
+    },
+    {
+      "id": "outfit-anniv-set",
+      "name": "周年纪念套装",
+      "type": "outfit",
+      "rarity": "anniversary",
+      "expire_days": 7,
+      "asset": "gifts/outfit-anniv-set.svg"
+    },
+    {
+      "id": "outfit-cosy-hood",
+      "name": "连帽睡袍",
+      "type": "outfit",
+      "rarity": "common",
+      "expire_days": 30,
+      "asset": "gifts/outfit-cosy-hood.svg"
+    },
+    {
+      "id": "outfit-halo",
+      "name": "小光环",
+      "type": "outfit",
+      "rarity": "event",
+      "expire_days": 7,
+      "asset": "gifts/outfit-halo.svg"
+    },
+    {
+      "id": "action-hug",
+      "name": "贴贴抱抱",
+      "type": "action",
+      "rarity": "common",
+      "expire_days": 0,
+      "asset": "gifts/action-hug.svg"
+    },
+    {
+      "id": "action-tail-wag",
+      "name": "摇尾巴",
+      "type": "action",
+      "rarity": "event",
+      "expire_days": 30,
+      "asset": "gifts/action-tail-wag.svg"
+    },
+    {
+      "id": "action-fly-kiss",
+      "name": "飞吻",
+      "type": "action",
+      "rarity": "event",
+      "expire_days": 7,
+      "asset": "gifts/action-fly-kiss.svg"
+    },
+    {
+      "id": "action-sleepy-yawn",
+      "name": "打哈欠",
+      "type": "action",
+      "rarity": "common",
+      "expire_days": 0,
+      "asset": "gifts/action-sleepy-yawn.svg"
+    },
+    {
+      "id": "action-paw-tap",
+      "name": "爪爪拍桌",
+      "type": "action",
+      "rarity": "common",
+      "expire_days": 0,
+      "asset": "gifts/action-paw-tap.svg"
+    },
+    {
+      "id": "emoji-heart-bubble",
+      "name": "爱心气泡",
+      "type": "emoji",
+      "rarity": "common",
+      "expire_days": 0,
+      "asset": "gifts/emoji-heart-bubble.svg"
+    },
+    {
+      "id": "emoji-blush",
+      "name": "脸红",
+      "type": "emoji",
+      "rarity": "event",
+      "expire_days": 7,
+      "asset": "gifts/emoji-blush.svg"
+    },
+    {
+      "id": "emoji-cat-dizzy",
+      "name": "晕晕猫",
+      "type": "emoji",
+      "rarity": "common",
+      "expire_days": 30,
+      "asset": "gifts/emoji-cat-dizzy.svg"
+    },
+    {
+      "id": "emoji-stomp",
+      "name": "生气跺脚",
+      "type": "emoji",
+      "rarity": "common",
+      "expire_days": 0,
+      "asset": "gifts/emoji-stomp.svg"
+    },
+    {
+      "id": "emoji-heart-eyes",
+      "name": "星星眼",
+      "type": "emoji",
+      "rarity": "event",
+      "expire_days": 7,
+      "asset": "gifts/emoji-heart-eyes.svg"
+    }
+  ]
+}
